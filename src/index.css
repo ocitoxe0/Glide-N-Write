@@ -1,12 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:wght@400;500;600&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "SF Pro Display", "Geist Sans", "Helvetica Neue", "Switzer", system-ui, sans-serif;
   --font-serif: "Newsreader", ui-serif, Georgia, serif;
+  --font-mono: "Geist Mono", "SF Mono", "JetBrains Mono", monospace;
 }
 
 body {
   margin: 0;
   overscroll-behavior-y: none;
+  background-color: #F7F6F3;
+  color: #111111;
+  -webkit-font-smoothing: antialiased;
 }

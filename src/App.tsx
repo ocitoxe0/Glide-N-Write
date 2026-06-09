@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useLayoutEffect } from 'react';
 import { Menu, Delete, RotateCcw, Keyboard, Volume2, ArrowUp, ArrowDown, ArrowLeft, ArrowRight } from 'lucide-react';
 
 type Direction = 'UP' | 'DOWN' | 'LEFT' | 'RIGHT';
@@ -21,9 +21,21 @@ export default function App() {
   const [isSaving, setIsSaving] = useState(false);
   const [isManualInput, setIsManualInput] = useState(false);
   const [newWord, setNewWord] = useState('');
+  
+  const [fontSizeLevel, setFontSizeLevel] = useState(1);
+  const textAreaRef = useRef<HTMLDivElement>(null);
+  const prevLengthRef = useRef(0);
 
   const currentSequenceKey = currentSequence.join(',');
-  const previewWord = dictionary[currentSequenceKey] || '';
+  const previewWord = dictionary[currentSequenceKey] || 
+    (mode === 'talk' && currentSequence.length > 0 ? dictionary[currentSequence[currentSequence.length - 1]] : '') || '';
+
+  const getHint = (dir: Direction) => {
+    const nextSeq = [...currentSequence, dir].join(',');
+    if (dictionary[nextSeq]) return dictionary[nextSeq];
+    if (dictionary[dir]) return dictionary[dir];
+    return dir === 'UP' ? 'Up' : dir === 'DOWN' ? 'Down' : dir === 'LEFT' ? 'Left' : 'Right';
+  };
 
   const startPos = useRef<{ x: number, y: number } | null>(null);
   const trailRef = useRef<SVGPolylineElement>(null);
@@ -142,6 +154,36 @@ export default function App() {
     });
   }, []);
 
+  useLayoutEffect(() => {
+    if (confirmedText.length < prevLengthRef.current) {
+      setFontSizeLevel(1); // Reset on delete
+    }
+    prevLengthRef.current = confirmedText.length;
+  }, [confirmedText.length]);
+
+  useLayoutEffect(() => {
+    if (!textAreaRef.current) return;
+    const container = textAreaRef.current;
+    const hasOverflow = container.scrollHeight > container.clientHeight + 2;
+    
+    if (hasOverflow && fontSizeLevel < 4) {
+      setFontSizeLevel(prev => prev + 1);
+    } else if (fontSizeLevel === 4) {
+      container.scrollTop = container.scrollHeight;
+    }
+  }, [confirmedText, previewWord, fontSizeLevel]);
+
+  const getFontSizeClass = () => {
+    switch(fontSizeLevel) {
+      case 1: return 'text-4xl sm:text-6xl';
+      case 2: return 'text-3xl sm:text-5xl';
+      case 3: return 'text-2xl sm:text-4xl';
+      case 4: return 'text-xl sm:text-3xl';
+      default: return 'text-4xl sm:text-6xl';
+    }
+  };
+  const fontClass = getFontSizeClass();
+
   return (
     <div className="flex flex-col h-[100dvh] bg-[#F7F6F3] font-sans text-[#111111] overflow-hidden select-none">
       
@@ -205,23 +247,31 @@ export default function App() {
       </header>
 
       {/* Text Area */}
-      <div className="shrink-0 flex items-center justify-center flex-col min-h-[100px] sm:min-h-[160px] p-4 sm:p-8 text-center max-w-4xl mx-auto w-full">
-        <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-3">
-          {confirmedText.map((word, i) => (
-            <span key={i} className="text-[#111111] text-4xl sm:text-6xl font-serif tracking-tight leading-[1.1]">
-              {word}
-            </span>
-          ))}
-          {mode === 'talk' && previewWord && (
-            <span className="text-[#787774] text-4xl sm:text-6xl font-serif tracking-tight leading-[1.1] opacity-60">
-              {previewWord}
-            </span>
-          )}
-          {confirmedText.length === 0 && (!previewWord || mode === 'entry') && (
-            <span className="text-[#787774] text-4xl sm:text-6xl font-serif tracking-tight leading-[1.1] opacity-30 pointer-events-none">
-              Drafting...
-            </span>
-          )}
+      <div 
+        className="w-full max-w-4xl mx-auto h-[180px] sm:h-[240px] shrink-0 relative"
+        style={{ WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 25%, black 100%)', maskImage: 'linear-gradient(to bottom, transparent 0%, black 25%, black 100%)' }}
+      >
+        <div 
+          ref={textAreaRef}
+          className="w-full h-full overflow-y-auto hide-scrollbar scroll-smooth"
+        >
+          <div className="flex flex-wrap justify-center content-center min-h-full gap-x-4 gap-y-3 p-4 sm:p-8 pb-12 sm:pb-16 text-center">
+            {confirmedText.map((word, i) => (
+              <span key={i} className={`text-[#111111] ${fontClass} font-serif tracking-tight leading-[1.1] transition-all`}>
+                {word}
+              </span>
+            ))}
+            {mode === 'talk' && previewWord && (
+              <span className={`text-[#787774] ${fontClass} font-serif tracking-tight leading-[1.1] opacity-60 transition-all`}>
+                {previewWord}
+              </span>
+            )}
+            {confirmedText.length === 0 && (!previewWord || mode === 'entry') && (
+              <span className={`text-[#787774] ${fontClass} font-serif tracking-tight leading-[1.1] opacity-30 pointer-events-none transition-all`}>
+                Drafting...
+              </span>
+            )}
+          </div>
         </div>
       </div>
 
@@ -230,18 +280,43 @@ export default function App() {
         
         {/* Swipe Area */}
         <div className="flex-1 w-full relative p-4 sm:p-8 flex items-center justify-center">
-          <div 
-            className="aspect-square w-full max-w-[320px] relative bg-[#FFFFFF] border border-[#EAEAEA] rounded-[16px] touch-none flex flex-col items-center justify-center overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.02)] hover:shadow-[0_4px_32px_rgba(0,0,0,0.04)] transition-shadow duration-300"
-            onPointerDown={onPointerDown}
-            onPointerMove={onPointerMove}
-            onPointerUp={onPointerUp}
-          >
+          <div className="relative w-full max-w-[320px]">
+            {/* Sequence Status Indicator */}
+            {currentSequence.length > 0 && (
+              <div className="absolute bottom-full mb-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 pointer-events-none z-20">
+                {/* Preview Badge */}
+                {mode === 'entry' && previewWord && (
+                  <div className="text-[#9F2F2D] font-medium bg-[#FDEBEC] border border-[#FDEBEC] px-4 py-2 rounded-md text-sm shadow-[0_2px_8px_rgba(0,0,0,0.04)] whitespace-nowrap">
+                    Existing: "{previewWord}"
+                  </div>
+                )}
+                
+                {/* Arrows Container */}
+                <div className="flex gap-1.5 p-1.5 bg-white rounded-md shadow-[0_2px_12px_rgba(0,0,0,0.06)] border border-[#EAEAEA]">
+                  {currentSequence.map((dir, i) => {
+                    const Icon = dir === 'UP' ? ArrowUp : dir === 'DOWN' ? ArrowDown : dir === 'LEFT' ? ArrowLeft : ArrowRight;
+                    return (
+                      <span key={i} className={`p-1.5 rounded-sm ${mode === 'entry' ? 'bg-[#FDEBEC] text-[#9F2F2D]' : 'bg-[#EDF3EC] text-[#346538]'}`}>
+                        <Icon size={16} strokeWidth={2.5} />
+                      </span>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
+            <div 
+              className="aspect-square w-full relative bg-[#FFFFFF] border border-[#EAEAEA] rounded-[16px] touch-none flex flex-col items-center justify-center overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.02)] hover:shadow-[0_4px_32px_rgba(0,0,0,0.04)] transition-shadow duration-300"
+              onPointerDown={onPointerDown}
+              onPointerMove={onPointerMove}
+              onPointerUp={onPointerUp}
+            >
             {/* Background Hint Graphics */}
-            <div className="absolute inset-0 pointer-events-none text-[#787774]/20">
-              <span className="absolute top-6 left-1/2 -translate-x-1/2 text-[10px] uppercase tracking-[0.1em] font-semibold">Up</span>
-              <span className="absolute bottom-6 left-1/2 -translate-x-1/2 text-[10px] uppercase tracking-[0.1em] font-semibold">Down</span>
-              <span className="absolute left-6 top-1/2 -translate-y-1/2 text-[10px] uppercase tracking-[0.1em] font-semibold -rotate-90">Left</span>
-              <span className="absolute right-6 top-1/2 -translate-y-1/2 text-[10px] uppercase tracking-[0.1em] font-semibold rotate-90">Right</span>
+            <div className="absolute inset-0 pointer-events-none text-[#787774]/40">
+              <span className="absolute top-6 left-1/2 -translate-x-1/2 text-[11px] font-medium tracking-wide">{getHint('UP')}</span>
+              <span className="absolute bottom-6 left-1/2 -translate-x-1/2 text-[11px] font-medium tracking-wide">{getHint('DOWN')}</span>
+              <span className="absolute left-6 top-1/2 -translate-y-1/2 text-[11px] font-medium tracking-wide">{getHint('LEFT')}</span>
+              <span className="absolute right-6 top-1/2 -translate-y-1/2 text-[11px] font-medium tracking-wide">{getHint('RIGHT')}</span>
               
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-20">
                 <div className="relative w-40 h-40 flex items-center justify-center">
@@ -267,38 +342,9 @@ export default function App() {
                 className="opacity-60"
               />
             </svg>
-
-            {/* Sequence Status Indicator */}
-            {currentSequence.length > 0 && (
-              <div className="absolute top-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 pointer-events-none z-20">
-                {/* Preview Badge */}
-                {mode === 'talk' && previewWord && (
-                  <div className="text-[#111111] font-medium bg-white border border-[#EAEAEA] px-5 py-2.5 rounded-md shadow-[0_2px_8px_rgba(0,0,0,0.04)] text-base tracking-tight">
-                    {previewWord}
-                  </div>
-                )}
-                {mode === 'entry' && previewWord && (
-                  <div className="text-[#9F2F2D] font-medium bg-[#FDEBEC] border border-[#FDEBEC] px-4 py-2 rounded-md text-sm shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
-                    Existing: "{previewWord}"
-                  </div>
-                )}
-                
-                {/* Arrows Container */}
-                <div className="flex gap-1.5 p-1.5 bg-white rounded-md shadow-[0_2px_12px_rgba(0,0,0,0.06)] border border-[#EAEAEA]">
-                  {currentSequence.map((dir, i) => {
-                    const Icon = dir === 'UP' ? ArrowUp : dir === 'DOWN' ? ArrowDown : dir === 'LEFT' ? ArrowLeft : ArrowRight;
-                    return (
-                      <span key={i} className={`p-1.5 rounded-sm ${mode === 'entry' ? 'bg-[#FDEBEC] text-[#9F2F2D]' : 'bg-[#EDF3EC] text-[#346538]'}`}>
-                        <Icon size={16} strokeWidth={2.5} />
-                      </span>
-                    );
-                  })}
-                </div>
-              </div>
-            )}
           </div>
         </div>
-
+      </div>
         {/* Stop Area */}
         <button 
           className="h-16 sm:h-20 w-[calc(100%-2rem)] sm:w-[calc(100%-5rem)] shrink-0 bg-[#FFFFFF] border border-[#EAEAEA] rounded-[8px] flex flex-col items-center justify-center active:scale-[0.98] transition-transform shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.04)] mt-2 mb-4 sm:mb-8"

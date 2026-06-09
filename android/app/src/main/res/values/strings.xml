@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">GlideAndWrite</string>
+    <string name="title_activity_main">GlideAndWrite</string>
+    <string name="package_name">com.glideandwrite.app</string>
+    <string name="custom_url_scheme">com.glideandwrite.app</string>
+</resources>

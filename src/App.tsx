@@ -1,19 +1,38 @@
 import React, { useState, useRef, useEffect, useLayoutEffect } from 'react';
-import { Menu, Delete, RotateCcw, Keyboard, Volume2, ArrowUp, ArrowDown, ArrowLeft, ArrowRight } from 'lucide-react';
+import { Menu, Delete, RotateCcw, Keyboard, Volume2, ArrowUp, ArrowDown, ArrowLeft, ArrowRight, Copy, Trash2, Plus } from 'lucide-react';
 
 type Direction = 'UP' | 'DOWN' | 'LEFT' | 'RIGHT';
 
+interface WordConfig {
+  id: string;
+  title: string;
+  description: string;
+  dictionary: Record<string, string>;
+}
+
 export default function App() {
+  const [currentView, setCurrentView] = useState<'main' | 'configs'>('main');
   const [mode, setMode] = useState<'talk' | 'entry'>('talk');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   
-  const [dictionary, setDictionary] = useState<Record<string, string>>({
-    'UP': 'Merhaba',
-    'DOWN': 'Nasılsın',
-    'RIGHT': 'Evet',
-    'LEFT': 'Hayır',
-    'UP,UP': 'Teşekkürler'
-  });
+  const [configs, setConfigs] = useState<WordConfig[]>([
+    {
+      id: 'default-1',
+      title: 'Default Config',
+      description: 'Basic daily conversational words',
+      dictionary: {
+        'UP': 'Merhaba',
+        'DOWN': 'Nasılsın',
+        'RIGHT': 'Evet',
+        'LEFT': 'Hayır',
+        'UP,UP': 'Teşekkürler'
+      }
+    }
+  ]);
+  const [activeConfigId, setActiveConfigId] = useState<string>('default-1');
+
+  const activeConfig = configs.find(c => c.id === activeConfigId) || configs[0];
+  const dictionary = activeConfig.dictionary;
 
   const [currentSequence, setCurrentSequence] = useState<Direction[]>([]);
   const [confirmedText, setConfirmedText] = useState<string[]>([]);
@@ -132,10 +151,11 @@ export default function App() {
     const finalWord = newWord.trim();
     if (finalWord) {
       if (isSaving) {
-        setDictionary(prev => ({
-          ...prev,
-          [currentSequenceKey]: finalWord
-        }));
+        setConfigs(prev => prev.map(c => 
+          c.id === activeConfigId 
+            ? { ...c, dictionary: { ...c.dictionary, [currentSequenceKey]: finalWord } }
+            : c
+        ));
         setCurrentSequence([]);
       } else if (isManualInput) {
         appendWord(finalWord);
@@ -196,6 +216,37 @@ export default function App() {
     }
   };
   const fontClass = getFontSizeClass();
+  const handleAddConfig = () => {
+    const newId = `config-${Date.now()}`;
+    setConfigs(prev => [...prev, {
+      id: newId,
+      title: 'New Configuration',
+      description: 'Custom word set',
+      dictionary: {}
+    }]);
+  };
+
+  const handleDeleteConfig = (id: string) => {
+    if (configs.length <= 1) return; // Prevent deleting the last config
+    setConfigs(prev => prev.filter(c => c.id !== id));
+    if (activeConfigId === id) {
+      const remaining = configs.filter(c => c.id !== id);
+      setActiveConfigId(remaining[0].id);
+    }
+  };
+
+  const handleDuplicateConfig = (config: WordConfig) => {
+    const newId = `config-${Date.now()}`;
+    setConfigs(prev => [...prev, {
+      ...config,
+      id: newId,
+      title: `${config.title} (Copy)`
+    }]);
+  };
+
+  const handleUpdateConfig = (id: string, updates: Partial<WordConfig>) => {
+    setConfigs(prev => prev.map(c => c.id === id ? { ...c, ...updates } : c));
+  };
 
   return (
     <div className="flex flex-col h-[100dvh] bg-[#F7F6F3] font-sans text-[#111111] overflow-hidden select-none">
@@ -222,8 +273,8 @@ export default function App() {
             </div>
             
             <nav className="flex flex-col gap-2">
-              <button className="text-left px-4 py-3 bg-[#EAEAEA]/50 text-[#111111] font-medium rounded-md transition-colors tracking-wide">Talk</button>
-              <button className="text-left px-4 py-3 text-[#787774] font-medium hover:bg-[#EAEAEA]/30 hover:text-[#111111] rounded-md transition-colors tracking-wide">Config</button>
+              <button onClick={() => { setCurrentView('main'); setIsMenuOpen(false); }} className={`text-left px-4 py-3 font-medium rounded-md transition-colors tracking-wide ${currentView === 'main' ? 'bg-[#EAEAEA]/50 text-[#111111]' : 'text-[#787774] hover:bg-[#EAEAEA]/30 hover:text-[#111111]'}`}>Talk / Entry</button>
+              <button onClick={() => { setCurrentView('configs'); setIsMenuOpen(false); }} className={`text-left px-4 py-3 font-medium rounded-md transition-colors tracking-wide ${currentView === 'configs' ? 'bg-[#EAEAEA]/50 text-[#111111]' : 'text-[#787774] hover:bg-[#EAEAEA]/30 hover:text-[#111111]'}`}>Configurations</button>
               <button className="text-left px-4 py-3 text-[#787774] font-medium hover:bg-[#EAEAEA]/30 hover:text-[#111111] rounded-md transition-colors tracking-wide">Settings</button>
               <button className="text-left px-4 py-3 text-[#787774] font-medium hover:bg-[#EAEAEA]/30 hover:text-[#111111] rounded-md transition-colors tracking-wide">About</button>
             </nav>
@@ -242,24 +293,80 @@ export default function App() {
           </button>
           <h1 className="text-xl font-sans tracking-tight pt-0.5 text-[#111111] font-semibold">Glide & Write</h1>
         </div>
-        <div className="flex items-center gap-3">
-          <button
-            className={`px-5 py-2.5 rounded-md text-sm font-semibold tracking-wide transition-all border shadow-[0_2px_8px_rgba(0,0,0,0.02)] active:scale-[0.98] ${
-              mode === 'talk' 
-                ? 'bg-[#EDF3EC] text-[#346538] border-[#EDF3EC] hover:bg-[#E1EDE0]' 
-                : 'bg-[#E1F3FE] text-[#1F6C9F] border-[#E1F3FE] hover:bg-[#D0EBFD]'
-            }`}
-            onClick={() => {
-              setMode(mode === 'talk' ? 'entry' : 'talk');
-              setCurrentSequence([]); 
-            }}
-          >
-            {mode === 'talk' ? 'Talk On' : 'Entry On'}
-          </button>
-        </div>
+        {currentView === 'main' && (
+          <div className="flex items-center gap-3">
+            <button
+              className={`px-5 py-2.5 rounded-md text-sm font-semibold tracking-wide transition-all border shadow-[0_2px_8px_rgba(0,0,0,0.02)] active:scale-[0.98] ${
+                mode === 'talk' 
+                  ? 'bg-[#EDF3EC] text-[#346538] border-[#EDF3EC] hover:bg-[#E1EDE0]' 
+                  : 'bg-[#E1F3FE] text-[#1F6C9F] border-[#E1F3FE] hover:bg-[#D0EBFD]'
+              }`}
+              onClick={() => {
+                setMode(mode === 'talk' ? 'entry' : 'talk');
+                setCurrentSequence([]); 
+              }}
+            >
+              {mode === 'talk' ? 'Talk On' : 'Entry On'}
+            </button>
+          </div>
+        )}
       </header>
 
-      {/* Text Area */}
+      {currentView === 'configs' ? (
+        <div className="flex-1 overflow-y-auto p-4 sm:p-8 max-w-2xl mx-auto w-full flex flex-col gap-5 hide-scrollbar pb-24">
+           {configs.map(config => (
+             <div key={config.id} className="bg-white rounded-xl border border-[#EAEAEA] p-5 shadow-[0_2px_12px_rgba(0,0,0,0.03)] flex flex-col gap-4">
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex-1 flex flex-col gap-1">
+                     <input 
+                       className="text-lg font-semibold text-[#111111] bg-transparent outline-none w-full placeholder:text-[#787774]/40"
+                       value={config.title}
+                       onChange={e => handleUpdateConfig(config.id, { title: e.target.value })}
+                       placeholder="Configuration Title"
+                     />
+                     <input 
+                       className="text-sm text-[#787774] bg-transparent outline-none w-full placeholder:text-[#787774]/40"
+                       value={config.description}
+                       onChange={e => handleUpdateConfig(config.id, { description: e.target.value })}
+                       placeholder="Description..."
+                     />
+                  </div>
+                  <button 
+                    onClick={() => setActiveConfigId(config.id)}
+                    className={`w-12 h-6 rounded-full transition-colors relative flex items-center shrink-0 ${activeConfigId === config.id ? 'bg-[#111111]' : 'bg-[#EAEAEA]'}`}
+                  >
+                    <div className={`w-5 h-5 bg-white rounded-full shadow-sm absolute transition-transform duration-300 ${activeConfigId === config.id ? 'translate-x-6' : 'translate-x-1'}`} />
+                  </button>
+                </div>
+                <div className="flex justify-end gap-2 pt-3 border-t border-[#F5F5F5]">
+                  <button 
+                    onClick={() => handleDuplicateConfig(config)}
+                    className="p-2 text-[#787774] hover:text-[#111111] hover:bg-[#F5F5F5] rounded-md transition-colors"
+                  >
+                    <Copy className="w-4 h-4" />
+                  </button>
+                  {configs.length > 1 && (
+                    <button 
+                      onClick={() => handleDeleteConfig(config.id)}
+                      className="p-2 text-[#787774] hover:text-[#9F2F2D] hover:bg-[#FDEBEC] rounded-md transition-colors"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </button>
+                  )}
+                </div>
+             </div>
+           ))}
+           <button 
+             onClick={handleAddConfig}
+             className="w-full py-5 mt-2 border-2 border-dashed border-[#D5D5D5] rounded-xl flex items-center justify-center gap-2 text-[#787774] font-medium hover:bg-white hover:border-[#EAEAEA] hover:shadow-[0_2px_12px_rgba(0,0,0,0.03)] hover:text-[#111111] transition-all active:scale-[0.98]"
+           >
+             <Plus className="w-5 h-5" />
+             Create New Configuration
+           </button>
+        </div>
+      ) : (
+        <>
+          {/* Text Area */}
       <div 
         className="w-full max-w-4xl mx-auto h-[180px] sm:h-[240px] shrink-0 relative"
         style={{ WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 25%, black 100%)', maskImage: 'linear-gradient(to bottom, transparent 0%, black 25%, black 100%)' }}
@@ -367,6 +474,8 @@ export default function App() {
           {mode === 'entry' && <span className="text-[10px] text-[#787774] mt-1 font-mono">Click to map action</span>}
         </button>
       </div>
+      </>
+      )}
 
       {/* Bottom Bar */}
       <div className="shrink-0 max-w-4xl mx-auto w-full grid grid-cols-4 px-4 sm:px-6 py-4 sm:py-6 border-t border-[#EAEAEA] bg-[#F7F6F3] relative z-20 pb-safe gap-2 sm:gap-4">

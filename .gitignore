@@ -36,4 +36,8 @@ skills-lock.json
 metadata.json
 
 # Android Build Temporary Files
-android/.gradle_temp/
+android/.gradle_temp/
+
+
+# Notes
+g&w.md

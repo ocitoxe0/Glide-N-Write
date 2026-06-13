@@ -1,126 +1,169 @@
-<img src=".\assets\Logo\GW2.png" width="120" alt="Glide & Write Logo" />
+<div align="center">
+  <img src="./assets/Logo/GW2.png" width="120" alt="Glide & Write Logo" />
+  <h1>Glide & Write</h1>
+  <p>
+    <a href="https://glideandwrite.org/">Website</a> • 
+    <a href="mailto:hello@glideandwrite.org">Contact</a>
+  </p>
+</div>
 
-# Glide & Write
+**Glide & Write** is an intuitive, accessible, and gesture-based communication application (AAC) specifically designed to help non-verbal individuals, or those with speech impairments, communicate rapidly and effectively with the people around them (doctors, teachers, police, family, etc.).
 
-Glide & Write is an intuitive, accessible, gesture-based communication application specifically designed for non-verbal individuals or those with speech impairments. By utilizing simple directional swipes or continuous screen glides, users can rapidly construct sentences and communicate their thoughts aloud using built-in text-to-speech.
+## 💡 The Story Behind & Purpose
+
+**The Inspiration:** My wife was laughing while watching a stand-up routine by a comedian named Ahren Belisle on YouTube Shorts. Ahren was non-verbal, but he was performing stand-up by typing on his phone and having the text spoken out loud. I was personally very moved by this and started thinking: *how could a non-verbal person communicate faster and more effectively, whether doing stand-up or in a simple daily conversation with a doctor, teacher, or police officer?* After pondering on this, I developed **Glide & Write**.
+
+Instead of wasting time typing letter by letter on traditional keyboards, the core motivation is to allow users to quickly construct sentences by combining predefined words using very simple hand gestures (swipes) and read them aloud to the listener with a single button. It is a method that might be hard to learn at first perhaps it feels like learning a new language but I believe that once you get used to it and build your own combinations, it can be used incredibly effectively. 
+
+It doesn't take much; if only 10 people in the world who experience speech difficulties use this at work, with their family, or in a cafe, and are able to live their lives more easily and comfortably, this project will have achieved its goal for me.
+
+---
 
 ## 📖 How It Works
 
-Users create words by swiping their fingers in the "Swipe Area" on the screen. The app offers two primary writing modes to accommodate different user preferences and experience levels:
+At the center of the application is a large **"Swipe Area"**. Users create words by sliding their fingers on the screen in specific directions (UP, DOWN, RIGHT, LEFT). Each direction or combination of directions (e.g., UP -> RIGHT) corresponds to a word previously defined by the user.
 
-### 1. Input Modes: Step vs. Glide
+While looking at the screen, users can visually see which word will be produced if they swipe in a certain direction (displayed next to the directional arrows).
 
-*   **Step Mode:** In this mode, each directional movement is a discrete, step-by-step action. You swipe in a direction, lift your finger, and then tap once to select the word, or swipe again in another direction to continue a combination. Since each direction and word selection is a separate action, this mode is the most suitable method for beginners to get accustomed to the writing system.
-*   **Glide Mode:** In this mode, you can glide your finger in desired directions within the Swipe Area without ever lifting it. For example, you can make a downward movement and then draw upwards. The moment you lift your finger, the current word is selected. To perform the same direction twice consecutively, simply make a small movement in that direction, pause briefly, and move in the same direction again.
-
-**Visual Feedback Example:**
-Let's say in a configuration: a right swipe calls the word "I", and swiping right then left calls the word "you".
-When the user looks at the Swipe Area, they see "I" written next to the right arrow.
-In **Glide Mode**, when the user draws to the right, a gray "I" previews in the text area above, and the Swipe Area now shows "you" on the left side.
-Without lifting their finger, the user then swipes left. The text area now previews "you".
-The moment they lift their finger, the word is selected and written in black text. Everything is now ready to move on to the next word.
-
-<img src="./assets/screenshots/Talk.png" width="300" alt="Talk Mode Screen" />
+<div align="center">
+  <img src="./assets/gifs/first_message.gif" width="300" alt="Writing a message" />
+</div>
 
 ---
 
-### 🎛 Operating Modes (Talk On vs. Entry On)
+## 🖐️ Input Modes
 
-At the top right corner, there is a toggle button that switches between "Talk On" and "Entry On".
+The app offers two different writing methods to suit the dexterity and habits of its users:
 
-*   **Talk On:** When this is active, all the writing actions described above are performed normally.
-*   **Entry On:** When activated, the background turns red to clearly indicate the change in state. In this mode, directional combinations no longer write text. Instead, after performing a combination, a popup appears. This allows the user to determine or revise which word that specific combination of swipes will produce. This is where users build and edit their vocabulary.
+### 1. Step Mode
+In this mode, every directional movement and selection is a discrete, step-by-step action.
+* **How it works:** You swipe in a direction and lift your finger. Then, to continue the combination, you swipe in another direction, or tap the screen once to select/confirm the word.
+* **Use Case:** This is the ideal mode for beginners to grasp the logic and learn combinations slowly and surely without making mistakes.
 
----
+### 2. Glide Mode
+This mode unlocks the true "fast communication" capability that the app promises.
+* **How it works:** You glide between directions without ever lifting your finger from the screen. For example, you pull down, then without lifting, pull right. The moment you lift your finger from the screen, the word represented by that combination is instantly written into the text box.
+* **Repeating the Same Direction:** If you want to go in the same direction twice (e.g., RIGHT -> RIGHT), you swipe right, pause for a very short duration (adjustable), and swipe right again.
+* **Use Case:** It allows experienced users who are accustomed to the app to construct an entire sentence in seconds without ever lifting their finger.
 
-### 📚 Layers (Maximize Vocabulary)
-
-A person in Glide Mode can write 4 different words with a single finger movement using this method. 
-With two finger movements, they can write 16 words; with three movements, 64; and with four movements, 256 characters. 
-In total, by making a maximum of 4 movements, a user can write **340 unique words** (combinations longer than 4 are, of course, also possible).
-
-The **Layer System** allows users to write even more words with fewer movements. Each layer can host completely separate combinations. 
-To switch layers, the user can either press the dedicated layer buttons or quickly swipe two fingers up or down within the Swipe Area.
-
----
-
-### ⚡ Quick Symbols
-
-Located below the Swipe Area is a writing tool containing 14 quickly accessible buttons. These slots can hold symbols or words up to a maximum of 5 characters.
-From the Settings menu, the user can change the function (the text) of these buttons and create 4 different sets/templates.
-
-**The Prefix Hyphen (-) Feature**
-As an additional feature, if words added to the Swipe Area or Quick Symbols start with a hyphen (e.g., `-ing`) and are followed by text without spaces, the app treats them as suffixes. It will append this text directly to the previous word without adding a space. 
-*Example:* If the last written word is "go", and "-ing" is inputted via the Swipe Area or Quick Symbols, the final word will become "going".
+<div align="center">
+  <img src="./assets/gifs/second_message.gif" width="300" alt="Writing another message" />
+</div>
 
 ---
 
-### 🕹️ Action Buttons
+## 🎛 Operating Modes
 
-At the top of the interface, four key action buttons help manage your sentence:
+Using the toggle button in the top right corner, the app's behavior can be switched between two states:
 
-*   **Clear:** Instantly clears all the text currently in the text area.
-*   **Undo:** Deletes the last word or action you performed.
-*   **Type:** Opens the standard on-screen keyboard, allowing you to manually type a word that you might not have added to your gesture dictionary yet.
-*   **Speak:** Activates the Text-to-Speech (TTS) engine to read the drafted sentence aloud.
+### Talk On (Normal Mode)
+This is the daily usage mode of the app. Swiping gestures add words to the text box normally.
 
----
-
-### ⚙️ Configurations
-
-<img src="./assets/screenshots/Configurations.png" width="300" alt="Configurations Screen" />
-
-The **Configurations** section allows you to manage entirely separate dictionaries and environments. You can create different configurations for different contexts (like "School", "Home", or different languages).
-Each configuration stores its own set of words, layer combinations, and target spoken language. This ensures that the Text-to-Speech engine uses the correct voice profile and pronunciation for the active configuration.
+### Entry On (Dictionary Building Mode)
+This is the mode where users build their personal dictionaries and program the app for themselves.
+* **How it works:** When activated, the background turns a distinct red to warn the user of the state change. Swiping in this mode does not write words; instead, an **"Add/Edit Word"** popup appears on the screen.
+* **Function:** You determine which word will be assigned to the swipe combination you just performed (e.g., LEFT -> UP). This allows everyone to assign their most frequently used words to the gestures that make the most sense to them.
 
 ---
 
-### 🛠 Settings
+## 📚 Layers (Multiplying Vocabulary)
 
-<img src="./assets/screenshots/Settings-2.png" width="300" alt="Settings Screen" />
+The secret to being able to write tens of thousands of words with only 4 main directions is the **Layer** system. With a maximum of a 4-movement combination, **340 unique words** can be defined in a single layer (combinations longer than 4 are also possible).
 
-The **Settings** menu gives you full control over the application's behavior and appearance:
-
-*   **Appearance (Themes):** Choose from 6 carefully designed visual themes (Bone, Oatmeal, Slate, Sage, Charcoal, Midnight) for optimal contrast and eye comfort.
-*   **UI Language:** Change the interface language of the app (supports multiple languages including English, Turkish, Spanish, French, etc.).
-*   **Glide Pause Duration:** Adjust the wait time (in milliseconds) required to register consecutive swipes in the same direction while in Glide Mode.
-*   **Layer Toggle & Settings:** Customize how many layers are available and whether the layer toggle buttons are displayed on the left or right side of the screen.
-*   **Quick Symbols:** Edit the 4 available templates for the 14-button Quick Symbols bar, assigning any short text or punctuation to each slot.
+To multiply the user's vocabulary, a total of 4 different Layers are provided:
+* Users can assign completely different words to each layer.
+* **Switching Layers:** You can switch between layers in a second by pressing the physical 1-2-3-4 buttons on the screen or by swiping **up/down with two fingers** in the swipe area.
+* This system allows an individual to carry thousands of words in the device's memory and their own muscle memory.
 
 ---
 
-## 🛠 Tech Stack
+## ⚡ Quick Symbols & Prefix Hyphen (-) Feature
 
-*   **Core:** [React 19](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
-*   **Build Tool:** [Vite](https://vitejs.dev/)
-*   **Styling:** [Tailwind CSS 4](https://tailwindcss.com/)
-*   **Animation:** [Motion](https://motion.dev/)
-*   **Icons:** [Lucide React](https://lucide.dev/)
-*   **Mobile Runtime:** [Capacitor](https://capacitorjs.com/) (Targeting Android & iOS)
+Located just below the swipe area are 14 quick access buttons.
+
+* **Features:** These buttons can hold up to 5 characters and can be assigned punctuation marks, emojis, or frequently used short words (yes, no, etc.).
+* **Templates:** You can create 4 different templates for these 14 buttons from the Settings section. (e.g., one template for just punctuation, another for emojis, another for numbers).
+
+**The Prefix Hyphen (-) Feature:**
+This is one of the smartest features of the app. If a text starting with a hyphen (e.g., `-ing`, `-s`, `-ed`) is added to the swipe combinations via "Entry Mode" or to the Quick Symbols, the app detects it as a **suffix**. When this suffix is typed or swiped, it attaches directly to the end of the previously written word **without leaving a space** (e.g., if you write "go" and then use the "-ing" combination, the word automatically becomes "going").
+
+<div align="center">
+  <img src="./assets/gifs/Quick_symbols.gif" width="300" alt="Quick Symbols Usage" />
+</div>
+
+---
+
+## 🕹️ Action Buttons
+
+There are 4 main buttons at the top of the interface to manage communication:
+1. **Clear:** Instantly deletes all text in the text box. Used to start a new sentence.
+2. **Undo:** Deletes the last swipe gesture or the last written word. A lifesaver for mistaken swipes.
+3. **Type (Keyboard):** Opens the operating system's standard keyboard if the user needs to write an uncommon word or proper noun that isn't defined in the system.
+4. **Speak (TTS):** The most crucial button. It reads the text in the text box aloud to the outside world (the listener) using the device's built-in Text-to-Speech engine.
+
+---
+
+## ⚙️ Configurations
+
+Users don't have to be limited to just one dictionary. The app offers completely independent **Configuration (Profile)** environments.
+
+* **Different Languages & Contexts:** A user can create one configuration as "English - Daily", another as "Spanish", and another as "School/Work Terms".
+* **Voice Engine Integration:** Each configuration has its own "Target Language". This ensures that when switching to a "Spanish" configuration, the device automatically uses a Spanish accent and voice engine when the "Speak" button is pressed.
+
+<div align="center">
+  <img src="./assets/gifs/Language.gif" width="300" alt="Language and Configurations" />
+</div>
+
+---
+
+## 🛠 Settings
+
+A rich settings menu is available for personalizing the app:
+
+* **Appearance (Themes):** 6 carefully selected color themes (Bone, Oatmeal, Slate, Sage, Charcoal, Midnight) for optimal contrast and eye comfort.
+* **UI Language:** Change the app's menu and button languages (English, Turkish, etc.).
+* **Glide Pause Duration:** Precise adjustment (in milliseconds) of the wait time required to go in the same direction twice while using Glide Mode. This is a critical accessibility setting since everyone's reflex time is different.
+* **Layer Toggle & Settings:** Ability to restrict the number of layers (e.g., reduce from 4 to 2) and choose whether the layer change buttons appear on the right or left side of the screen (for Left/Right-handed users).
+* **Quick Symbols Editor:** The area where the contents of the 14 buttons within the 4 different templates mentioned above can be individually changed and edited.
+
+---
+
+## 💻 Tech Stack
+
+* **Core:** [React 19](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
+* **Build Tool:** [Vite](https://vitejs.dev/)
+* **Styling:** [Tailwind CSS 4](https://tailwindcss.com/)
+* **Animation:** [Motion](https://motion.dev/)
+* **Icons:** [Lucide React](https://lucide.dev/)
+* **Mobile Runtime:** [Capacitor](https://capacitorjs.com/) (Targeting Android & iOS)
+
+---
 
 ## 🚀 Local Development
 
 ### Prerequisites
-*   [Node.js](https://nodejs.org/) (v18 or higher recommended)
+* [Node.js](https://nodejs.org/) (v18 or higher recommended)
 
 ### Setup
 
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/eedali/GlideAndWrite
-    cd GlideAndWrite
-    ```
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/eedali/GlideAndWrite
+   cd GlideAndWrite
+   ```
 
-2.  **Install dependencies:**
-    ```bash
-    npm install
-    ```
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-3.  **Start the development server:**
-    ```bash
-    npm run dev
-    ```
-    The app will be available at `http://localhost:3000`.
+3. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
+   The app will be available at `http://localhost:3000`.
+
+---
 
 ## 📱 Mobile Build (Capacitor)
 
@@ -137,10 +180,10 @@ npx cap sync android
 npx cap open android
 ```
 
-## 🤝 Contributing
+---
 
+## 🤝 Contributing
 Contributions, issues, and feature requests are highly encouraged! Feel free to check the issues page or open a pull request.
 
 ## 📄 License
-
 This project is open-source and free to use.

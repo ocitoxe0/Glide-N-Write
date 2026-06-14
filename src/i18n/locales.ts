@@ -8,7 +8,56 @@ export const translations: Record<LanguageType, any> = {
     configs: { editMapped: "Edit mapped sequences", typeWord: "Type word...", configTitle: "Configuration Title", description: "Description...", createNew: "Create New Configuration" },
     main: { drafting: "Drafting...", existing: "Existing:", mapping: "Mapping" },
     bottomBar: { clear: "Clear", undo: "Undo", type: "Type", speak: "Speak" },
-    modal: { mapAction: "Map Action", enterWord: "Enter Word", typeYourWord: "Type your word...", cancel: "Cancel", save: "Save" }
+    modal: { mapAction: "Map Action", enterWord: "Enter Word", typeYourWord: "Type your word...", cancel: "Cancel", save: "Save" },
+    aboutPage: { title: "Glide & Write", version: "Version 1.0.0", p1: "Glide & Write is an innovative, accessible text entry system designed to make typing easier and faster through directional gliding and layered dictionary configurations.", p2: "Whether you use it for daily conversations, specialized terminology, or accessible communication, Glide & Write adapts to your needs with fully customizable word sets and intuitive swipe controls.", contact: "Contact", github: "GitHub", website: "Website" },
+    tutorial: {
+      selectLanguage: "Please select your preferred language before we begin.",
+      promptTitle: "Welcome to Glide & Write!",
+      promptDesc: "Would you like a quick tutorial to learn how to use the app?",
+      btnYes: "Yes, start tutorial",
+      btnLater: "Ask me later",
+      btnNo: "No, don't ask again",
+
+      finish: "Finish",
+      next: "Next",
+      startTutorialBtn: "Restart Tutorial",
+      step1Title: "Menu",
+      step1Desc: "Let's learn how to use Glide & Write. First, tap here to open the menu.",
+      step2Title: "Configurations",
+      step2Desc: "Go to Configurations to create your word set.",
+      step3Title: "Create New Configuration",
+      step3Desc: "Tap this button to create a brand new custom word set.",
+      step4Title: "Configure & Activate",
+      step4Desc: "Select your language, change the title, and then click the toggle switch to activate your new configuration!",
+      step5Title: "Menu",
+      step5Desc: "Great! Now let's open the menu again.",
+      step6Title: "Talk & Entry",
+      step6Desc: "Tap here to return to the main screen.",
+      step7Title: "Talk Mode",
+      step7Desc: "This is the swipe area. In Talk mode, you glide to form words and sentences.",
+      step8Title: "Entry Mode",
+      step8Desc: "Tap the Entry On toggle to switch to Entry mode, where you can add new words.",
+      step9Title: "Add New Words",
+      step9Desc: "Swipe a direction to map a new word to it.",
+      step10Title: "Map Action",
+      step10Desc: "Type the word you want to map to this direction.",
+      step11Title: "Save Word",
+      step11Desc: "Tap Save to add it to your dictionary.",
+      step12Title: "Switch to Talk",
+      step12Desc: "Tap the Talk On toggle to return to Talk mode.",
+      step13Title: "Test Your Word",
+      step13Desc: "Swipe the same direction you just mapped to type your new word.",
+      step14Title: "Speak",
+      step14Desc: "Tap the Speak button to read your sentence out loud.",
+      step15Title: "Menu",
+      step15Desc: "Now let's check out the Settings.",
+      step16Title: "Settings",
+      step16Desc: "Tap on the Settings option.",
+      step17Title: "Personalize Your App",
+      step17Desc: "You can change the language, adjust glide speeds, and modify quick symbols here.",
+      step18Title: "You are ready!",
+      step18Desc: "You have learned the basics of Glide & Write. You can now start communicating quickly and easily!"
+    }
   },
   tr: {
     menu: { title: "Menü", talkEntry: "Konuş", configs: "Yapılandırmalar", settings: "Ayarlar", about: "Hakkında" },
@@ -17,7 +66,56 @@ export const translations: Record<LanguageType, any> = {
     configs: { editMapped: "Eşlenen dizileri düzenle", typeWord: "Kelime yaz...", configTitle: "Yapılandırma Başlığı", description: "Açıklama...", createNew: "Yeni Yapılandırma Oluştur" },
     main: { drafting: "Taslak...", existing: "Mevcut:", mapping: "Eşleniyor" },
     bottomBar: { clear: "Temizle", undo: "Geri Al", type: "Yaz", speak: "Konuş" },
-    modal: { mapAction: "Eylemi Eşle", enterWord: "Kelime Gir", typeYourWord: "Kelimenizi yazın...", cancel: "İptal", save: "Kaydet" }
+    modal: { mapAction: "Eylemi Eşle", enterWord: "Kelime Gir", typeYourWord: "Kelimenizi yazın...", cancel: "İptal", save: "Kaydet" },
+    aboutPage: { title: "Glide & Write", version: "Sürüm 1.0.0", p1: "Glide & Write, yönlü kaydırma ve katmanlı sözlük yapılandırmaları aracılığıyla yazmayı daha kolay ve hızlı hale getirmek için tasarlanmış yenilikçi, erişilebilir bir metin giriş sistemidir.", p2: "İster günlük konuşmalar, özel terminoloji, ister erişilebilir iletişim için kullanın, Glide & Write tamamen özelleştirilebilir kelime setleri ve sezgisel kaydırma kontrolleri ile ihtiyaçlarınıza uyum sağlar.", contact: "İletişim", github: "GitHub", website: "Web Sitesi" },
+    tutorial: {
+      selectLanguage: "Başlamadan önce lütfen tercih ettiğiniz dili seçin.",
+      promptTitle: "Glide & Write'a Hoş Geldiniz!",
+      promptDesc: "Uygulamayı nasıl kullanacağınızı öğrenmek için kısa bir eğitim ister misiniz?",
+      btnYes: "Evet, eğitimi başlat",
+      btnLater: "Daha sonra sor",
+      btnNo: "Hayır, bir daha sorma",
+
+      finish: "Bitir",
+      next: "İleri",
+      startTutorialBtn: "Eğitimi Yeniden Başlat",
+      step1Title: "Menü",
+      step1Desc: "Glide & Write kullanmayı öğrenelim. İlk olarak menüyü açmak için buraya dokunun.",
+      step2Title: "Yapılandırmalar",
+      step2Desc: "Kelime setinizi oluşturmak için Yapılandırmalar'a gidin.",
+      step3Title: "Yeni Yapılandırma Oluştur",
+      step3Desc: "Yepyeni bir özel kelime seti oluşturmak için bu butona dokunun.",
+      step4Title: "Yapılandır ve Etkinleştir",
+      step4Desc: "Dilinizi seçin, başlığı değiştirin ve ardından yeni yapılandırmanızı etkinleştirmek için anahtara tıklayın!",
+      step5Title: "Menü",
+      step5Desc: "Harika! Şimdi menüyü tekrar açalım.",
+      step6Title: "Konuş & Giriş",
+      step6Desc: "Ana ekrana dönmek için buraya dokunun.",
+      step7Title: "Konuşma Modu",
+      step7Desc: "Burası kaydırma alanı. Konuşma modunda, kelime ve cümle oluşturmak için kaydırırsınız.",
+      step8Title: "Giriş Modu",
+      step8Desc: "Yeni kelimeler ekleyebileceğiniz Giriş moduna geçmek için Giriş Açık anahtarına dokunun.",
+      step9Title: "Yeni Kelimeler Ekle",
+      step9Desc: "Yeni bir kelimeyi eşlemek için bir yöne kaydırın.",
+      step10Title: "Eylemi Eşle",
+      step10Desc: "Bu yöne eşlemek istediğiniz kelimeyi yazın.",
+      step11Title: "Kelimeyi Kaydet",
+      step11Desc: "Sözlüğünüze eklemek için Kaydet'e dokunun.",
+      step12Title: "Konuşmaya Geç",
+      step12Desc: "Konuşma moduna dönmek için Konuşma Açık anahtarına dokunun.",
+      step13Title: "Kelimenizi Test Edin",
+      step13Desc: "Yeni kelimenizi yazmak için az önce eşlediğiniz aynı yöne kaydırın.",
+      step14Title: "Seslendir",
+      step14Desc: "Cümlenizi yüksek sesle okutmak için Konuş butonuna dokunun.",
+      step15Title: "Menü",
+      step15Desc: "Şimdi Ayarlar'a göz atalım.",
+      step16Title: "Ayarlar",
+      step16Desc: "Ayarlar seçeneğine dokunun.",
+      step17Title: "Uygulamanızı Kişiselleştirin",
+      step17Desc: "Buradan dili değiştirebilir, kaydırma hızlarını ayarlayabilir ve hızlı sembolleri düzenleyebilirsiniz.",
+      step18Title: "Hazırsınız!",
+      step18Desc: "Glide & Write'ın temellerini öğrendiniz. Artık hızlı ve kolay bir şekilde iletişim kurmaya başlayabilirsiniz!"
+    }
   },
   fi: {
     menu: { title: "Valikko", talkEntry: "Puhu", configs: "Asetukset", settings: "Asetukset", about: "Tietoja" },
@@ -26,7 +124,20 @@ export const translations: Record<LanguageType, any> = {
     configs: { editMapped: "Muokkaa kartoitettuja sekvenssejä", typeWord: "Kirjoita sana...", configTitle: "Asetuksen Otsikko", description: "Kuvaus...", createNew: "Luo Uusi Asetus" },
     main: { drafting: "Luonnos...", existing: "Nykyinen:", mapping: "Kartoitus" },
     bottomBar: { clear: "Tyhjennä", undo: "Kumoa", type: "Kirjoita", speak: "Puhu" },
-    modal: { mapAction: "Kartoita Toiminto", enterWord: "Syötä Sana", typeYourWord: "Kirjoita sanasi...", cancel: "Peruuta", save: "Tallenna" }
+    modal: { mapAction: "Kartoita Toiminto", enterWord: "Syötä Sana", typeYourWord: "Kirjoita sanasi...", cancel: "Peruuta", save: "Tallenna" },
+    aboutPage: { title: "Glide & Write", version: "Versio 1.0.0", p1: "Glide & Write on innovatiivinen, saavutettava tekstinsyöttöjärjestelmä, joka on suunniteltu tekemään kirjoittamisesta helpompaa ja nopeampaa suuntautuvan liu'un ja kerrostettujen sanakirjamääritysten avulla.", p2: "Käytitpä sitä päivittäisiin keskusteluihin, erikoisterminologiaan tai saavutettavaan viestintään, Glide & Write mukautuu tarpeisiisi täysin mukautettavilla sanajoukoilla ja intuitiivisilla pyyhkäisyohjaimilla.", contact: "Yhteystiedot", github: "GitHub", website: "Verkkosivusto" },
+    tutorial: {
+      selectLanguage: "Valitse haluamasi kieli ennen kuin aloitamme.",
+      promptTitle: "Tervetuloa Glide & Write -sovellukseen!",
+      promptDesc: "Haluatko lyhyen oppaan sovelluksen käytöstä?",
+      btnYes: "Kyllä, aloita opas",
+      btnLater: "Kysy myöhemmin",
+      btnNo: "Ei, älä kysy uudelleen",
+
+      finish: "Valmis",
+      next: "Seuraava",
+      startTutorialBtn: "Käynnistä Opas Uudelleen"
+    }
   },
   es: {
     menu: { title: "Menú", talkEntry: "Hablar", configs: "Configuraciones", settings: "Ajustes", about: "Acerca de" },
@@ -35,7 +146,20 @@ export const translations: Record<LanguageType, any> = {
     configs: { editMapped: "Editar secuencias mapeadas", typeWord: "Escribir palabra...", configTitle: "Título de Configuración", description: "Descripción...", createNew: "Crear Nueva Configuración" },
     main: { drafting: "Borrador...", existing: "Existente:", mapping: "Mapeando" },
     bottomBar: { clear: "Borrar", undo: "Deshacer", type: "Escribir", speak: "Hablar" },
-    modal: { mapAction: "Mapear Acción", enterWord: "Ingresar Palabra", typeYourWord: "Escribe tu palabra...", cancel: "Cancelar", save: "Guardar" }
+    modal: { mapAction: "Mapear Acción", enterWord: "Ingresar Palabra", typeYourWord: "Escribe tu palabra...", cancel: "Cancelar", save: "Guardar" },
+    aboutPage: { title: "Glide & Write", version: "Versión 1.0.0", p1: "Glide & Write es un sistema de entrada de texto innovador y accesible diseñado para hacer que escribir sea más fácil y rápido mediante el deslizamiento direccional y configuraciones de diccionario en capas.", p2: "Ya sea que lo use para conversaciones diarias, terminología especializada o comunicación accesible, Glide & Write se adapta a sus necesidades con conjuntos de palabras totalmente personalizables y controles de deslizamiento intuitivos.", contact: "Contacto", github: "GitHub", website: "Sitio Web" },
+    tutorial: {
+      selectLanguage: "Seleccione su idioma preferido antes de comenzar.",
+      promptTitle: "¡Bienvenido a Glide & Write!",
+      promptDesc: "¿Desea un tutorial rápido para aprender a usar la aplicación?",
+      btnYes: "Sí, iniciar tutorial",
+      btnLater: "Preguntar más tarde",
+      btnNo: "No volver a preguntar",
+
+      finish: "Finalizar",
+      next: "Siguiente",
+      startTutorialBtn: "Reiniciar Tutorial"
+    }
   },
   zh: {
     menu: { title: "菜单", talkEntry: "说话", configs: "配置", settings: "设置", about: "关于" },
@@ -44,7 +168,20 @@ export const translations: Record<LanguageType, any> = {
     configs: { editMapped: "编辑映射的序列", typeWord: "输入词语...", configTitle: "配置标题", description: "描述...", createNew: "创建新配置" },
     main: { drafting: "起草中...", existing: "现有的:", mapping: "映射中" },
     bottomBar: { clear: "清除", undo: "撤销", type: "输入", speak: "说话" },
-    modal: { mapAction: "映射操作", enterWord: "输入词语", typeYourWord: "输入你的词语...", cancel: "取消", save: "保存" }
+    modal: { mapAction: "映射操作", enterWord: "输入词语", typeYourWord: "输入你的词语...", cancel: "取消", save: "保存" },
+    aboutPage: { title: "Glide & Write", version: "版本 1.0.0", p1: "Glide & Write 是一种创新且易于访问的文本输入系统，旨在通过定向滑动和分层字典配置使打字变得更简单、更快捷。", p2: "无论您是将其用于日常对话、专业术语还是无障碍交流，Glide & Write 都能通过完全可自定义的词集和直观的滑动控制适应您的需求。", contact: "联系方式", github: "GitHub", website: "网站" },
+    tutorial: {
+      selectLanguage: "在开始之前，请选择您首选的语言。",
+      promptTitle: "欢迎来到 Glide & Write！",
+      promptDesc: "您想通过一个简短的教程来学习如何使用此应用吗？",
+      btnYes: "是的，开始教程",
+      btnLater: "以后再问",
+      btnNo: "不了，不再询问",
+
+      finish: "完成",
+      next: "下一步",
+      startTutorialBtn: "重新启动教程"
+    }
   },
   hi: {
     menu: { title: "मेनू", talkEntry: "बातचीत", configs: "विन्यास", settings: "सेटिंग्स", about: "के बारे में" },
@@ -53,7 +190,20 @@ export const translations: Record<LanguageType, any> = {
     configs: { editMapped: "मैप किए गए अनुक्रमों को संपादित करें", typeWord: "शब्द टाइप करें...", configTitle: "विन्यास शीर्षक", description: "विवरण...", createNew: "नया विन्यास बनाएँ" },
     main: { drafting: "मसौदा तैयार किया जा रहा है...", existing: "मौजूदा:", mapping: "मैपिंग" },
     bottomBar: { clear: "साफ़ करें", undo: "पूर्ववत करें", type: "टाइप करें", speak: "बोलें" },
-    modal: { mapAction: "क्रिया मैप करें", enterWord: "शब्द दर्ज करें", typeYourWord: "अपना शब्द टाइप करें...", cancel: "रद्द करें", save: "सहेजें" }
+    modal: { mapAction: "क्रिया मैप करें", enterWord: "शब्द दर्ज करें", typeYourWord: "अपना शब्द टाइप करें...", cancel: "रद्द करें", save: "सहेजें" },
+    aboutPage: { title: "Glide & Write", version: "संस्करण 1.0.0", p1: "ग्लाइड एंड राइट एक अभिनव, सुलभ पाठ प्रविष्टि प्रणाली है जिसे दिशात्मक ग्लाइडिंग और स्तरित शब्दकोश कॉन्फ़िगरेशन के माध्यम से टाइपिंग को आसान और तेज़ बनाने के लिए डिज़ाइन किया गया है।", p2: "चाहे आप इसका उपयोग दैनिक बातचीत, विशेष शब्दावली, या सुलभ संचार के लिए करते हों, ग्लाइड एंड राइट पूरी तरह से अनुकूलन योग्य शब्द सेट और सहज स्वाइप नियंत्रण के साथ आपकी आवश्यकताओं के अनुकूल है।", contact: "संपर्क करें", github: "GitHub", website: "वेबसाइट" },
+    tutorial: {
+      selectLanguage: "शुरू करने से पहले कृपया अपनी पसंदीदा भाषा चुनें।",
+      promptTitle: "Glide & Write में आपका स्वागत है!",
+      promptDesc: "क्या आप ऐप का उपयोग करना सीखने के लिए एक त्वरित ट्यूटोरियल चाहेंगे?",
+      btnYes: "हाँ, ट्यूटोरियल शुरू करें",
+      btnLater: "बाद में पूछें",
+      btnNo: "नहीं, दोबारा मत पूछो",
+
+      finish: "समाप्त",
+      next: "अगला",
+      startTutorialBtn: "ट्यूटोरियल पुनरारंभ करें"
+    }
   },
   ar: {
     menu: { title: "القائمة", talkEntry: "تحدث", configs: "التكوينات", settings: "الإعدادات", about: "حول" },
@@ -62,7 +212,20 @@ export const translations: Record<LanguageType, any> = {
     configs: { editMapped: "تعديل التسلسلات المعينة", typeWord: "اكتب كلمة...", configTitle: "عنوان التكوين", description: "وصف...", createNew: "إنشاء تكوين جديد" },
     main: { drafting: "صياغة...", existing: "حالي:", mapping: "تعيين" },
     bottomBar: { clear: "مسح", undo: "تراجع", type: "كتابة", speak: "تحدث" },
-    modal: { mapAction: "تعيين الإجراء", enterWord: "أدخل كلمة", typeYourWord: "اكتب كلمتك...", cancel: "إلغاء", save: "حفظ" }
+    modal: { mapAction: "تعيين الإجراء", enterWord: "أدخل كلمة", typeYourWord: "اكتب كلمتك...", cancel: "إلغاء", save: "حفظ" },
+    aboutPage: { title: "Glide & Write", version: "الإصدار 1.0.0", p1: "إن Glide & Write هو نظام إدخال نص مبتكر ويمكن الوصول إليه مصمم لجعل الكتابة أسهل وأسرع من خلال الانزلاق الاتجاهي وتكوينات القاموس ذات الطبقات.", p2: "سواء كنت تستخدمه للمحادثات اليومية، أو المصطلحات المتخصصة، أو التواصل الميسر، فإن Glide & Write يتكيف مع احتياجاتك من خلال مجموعات كلمات قابلة للتخصيص بالكامل وعناصر تحكم بديهية في التمرير.", contact: "اتصال", github: "GitHub", website: "موقع إلكتروني" },
+    tutorial: {
+      selectLanguage: "الرجاء تحديد لغتك المفضلة قبل أن نبدأ.",
+      promptTitle: "مرحبًا بك في Glide & Write!",
+      promptDesc: "هل ترغب في برنامج تعليمي سريع لمعرفة كيفية استخدام التطبيق؟",
+      btnYes: "نعم، ابدأ البرنامج التعليمي",
+      btnLater: "اسألني لاحقًا",
+      btnNo: "لا، لا تسأل مرة أخرى",
+
+      finish: "إنهاء",
+      next: "التالي",
+      startTutorialBtn: "إعادة تشغيل البرنامج التعليمي"
+    }
   },
   bn: {
     menu: { title: "মেনু", talkEntry: "কথা", configs: "কনফিগারেশন", settings: "সেটিংস", about: "সম্পর্কে" },
@@ -71,7 +234,20 @@ export const translations: Record<LanguageType, any> = {
     configs: { editMapped: "ম্যাপ করা ক্রম সম্পাদনা করুন", typeWord: "শব্দ টাইপ করুন...", configTitle: "কনফিগারেশন শিরোনাম", description: "বিবরণ...", createNew: "নতুন কনফিগারেশন তৈরি করুন" },
     main: { drafting: "খসড়া করা হচ্ছে...", existing: "বিদ্যমান:", mapping: "ম্যাপিং" },
     bottomBar: { clear: "পরিষ্কার করুন", undo: "পূর্বাবস্থায় ফেরান", type: "টাইপ করুন", speak: "কথা বলুন" },
-    modal: { mapAction: "ম্যাপ অ্যাকশন", enterWord: "শব্দ লিখুন", typeYourWord: "আপনার শব্দ টাইপ করুন...", cancel: "বাতিল করুন", save: "সংরক্ষণ করুন" }
+    modal: { mapAction: "ম্যাপ অ্যাকশন", enterWord: "শব্দ লিখুন", typeYourWord: "আপনার শব্দ টাইপ করুন...", cancel: "বাতিল করুন", save: "সংরক্ষণ করুন" },
+    aboutPage: { title: "Glide & Write", version: "সংস্করণ ১.০.০", p1: "গ্লাইড অ্যান্ড রাইট একটি উদ্ভাবনী, অ্যাক্সেসযোগ্য টেক্সট এন্ট্রি সিস্টেম যা নির্দেশক গ্লাইডিং এবং স্তরযুক্ত অভিধান কনফিগারেশনের মাধ্যমে টাইপিংকে সহজ এবং দ্রুত করার জন্য ডিজাইন করা হয়েছে।", p2: "আপনি এটি দৈনন্দিন কথোপকথন, বিশেষ পরিভাষা বা অ্যাক্সেসযোগ্য যোগাযোগের জন্যই ব্যবহার করুন না কেন, গ্লাইড অ্যান্ড রাইট সম্পূর্ণ কাস্টমাইজযোগ্য শব্দ সেট এবং স্বজ্ঞাত সোয়াইপ নিয়ন্ত্রণের সাথে আপনার প্রয়োজনের সাথে খাপ খায়।", contact: "যোগাযোগ", github: "GitHub", website: "ওয়েবসাইট" },
+    tutorial: {
+      selectLanguage: "শুরু করার আগে আপনার পছন্দের ভাষা নির্বাচন করুন।",
+      promptTitle: "Glide & Write এ স্বাগতম!",
+      promptDesc: "আপনি কি অ্যাপটি কীভাবে ব্যবহার করবেন তা জানতে একটি দ্রুত টিউটোরিয়াল চান?",
+      btnYes: "হ্যাঁ, টিউটোরিয়াল শুরু করুন",
+      btnLater: "পরে জিজ্ঞাসা করুন",
+      btnNo: "না, আর জিজ্ঞাসা করবেন না",
+
+      finish: "শেষ",
+      next: "পরবর্তী",
+      startTutorialBtn: "টিউটোরিয়াল পুনরায় চালু করুন"
+    }
   },
   ru: {
     menu: { title: "Меню", talkEntry: "Разговор", configs: "Конфигурации", settings: "Настройки", about: "О приложении" },
@@ -80,7 +256,20 @@ export const translations: Record<LanguageType, any> = {
     configs: { editMapped: "Изменить назначенные последовательности", typeWord: "Введите слово...", configTitle: "Название конфигурации", description: "Описание...", createNew: "Создать новую конфигурацию" },
     main: { drafting: "Черновик...", existing: "Существующий:", mapping: "Назначение" },
     bottomBar: { clear: "Очистить", undo: "Отменить", type: "Ввод", speak: "Озвучить" },
-    modal: { mapAction: "Назначить действие", enterWord: "Введите слово", typeYourWord: "Введите ваше слово...", cancel: "Отмена", save: "Сохранить" }
+    modal: { mapAction: "Назначить действие", enterWord: "Введите слово", typeYourWord: "Введите ваше слово...", cancel: "Отмена", save: "Сохранить" },
+    aboutPage: { title: "Glide & Write", version: "Версия 1.0.0", p1: "Glide & Write — это инновационная, доступная система ввода текста, предназначенная для того, чтобы сделать набор текста проще и быстрее за счет направленного скольжения и многоуровневых настроек словаря.", p2: "Независимо от того, используете ли вы его для повседневного общения, специализированной терминологии или доступного общения, Glide & Write адаптируется к вашим потребностям с помощью полностью настраиваемых наборов слов и интуитивно понятных элементов управления смахиванием.", contact: "Контакты", github: "GitHub", website: "Веб-сайт" },
+    tutorial: {
+      selectLanguage: "Пожалуйста, выберите предпочитаемый язык перед началом.",
+      promptTitle: "Добро пожаловать в Glide & Write!",
+      promptDesc: "Хотели бы вы пройти краткое обучение, чтобы узнать, как использовать приложение?",
+      btnYes: "Да, начать обучение",
+      btnLater: "Спросить позже",
+      btnNo: "Нет, больше не спрашивать",
+
+      finish: "Завершить",
+      next: "Далее",
+      startTutorialBtn: "Перезапустить обучение"
+    }
   },
   pt: {
     menu: { title: "Menu", talkEntry: "Falar", configs: "Configurações", settings: "Ajustes", about: "Sobre" },
@@ -89,7 +278,20 @@ export const translations: Record<LanguageType, any> = {
     configs: { editMapped: "Editar sequências mapeadas", typeWord: "Digite a palavra...", configTitle: "Título da Configuração", description: "Descrição...", createNew: "Criar Nova Configuração" },
     main: { drafting: "Rascunho...", existing: "Existente:", mapping: "Mapeando" },
     bottomBar: { clear: "Limpar", undo: "Desfazer", type: "Digitar", speak: "Falar" },
-    modal: { mapAction: "Mapear Ação", enterWord: "Inserir Palavra", typeYourWord: "Digite sua palavra...", cancel: "Cancelar", save: "Salvar" }
+    modal: { mapAction: "Mapear Ação", enterWord: "Inserir Palavra", typeYourWord: "Digite sua palavra...", cancel: "Cancelar", save: "Salvar" },
+    aboutPage: { title: "Glide & Write", version: "Versão 1.0.0", p1: "O Glide & Write é um sistema de entrada de texto inovador e acessível projetado para tornar a digitação mais fácil e rápida por meio de deslizamento direcional e configurações de dicionário em camadas.", p2: "Quer você o use para conversas diárias, terminologia especializada ou comunicação acessível, o Glide & Write se adapta às suas necessidades com conjuntos de palavras totalmente personalizáveis e controles de deslizamento intuitivos.", contact: "Contato", github: "GitHub", website: "Site" },
+    tutorial: {
+      selectLanguage: "Selecione seu idioma preferido antes de começarmos.",
+      promptTitle: "Bem-vindo ao Glide & Write!",
+      promptDesc: "Gostaria de um rápido tutorial para aprender a usar o aplicativo?",
+      btnYes: "Sim, iniciar tutorial",
+      btnLater: "Perguntar mais tarde",
+      btnNo: "Não, não perguntar novamente",
+
+      finish: "Concluir",
+      next: "Próximo",
+      startTutorialBtn: "Reiniciar Tutorial"
+    }
   },
   fr: {
     menu: { title: "Menu", talkEntry: "Parler", configs: "Configurations", settings: "Paramètres", about: "À propos" },
@@ -98,7 +300,20 @@ export const translations: Record<LanguageType, any> = {
     configs: { editMapped: "Modifier les séquences mappées", typeWord: "Tapez le mot...", configTitle: "Titre de Configuration", description: "Description...", createNew: "Créer une Nouvelle Configuration" },
     main: { drafting: "Brouillon...", existing: "Existant:", mapping: "Mappage" },
     bottomBar: { clear: "Effacer", undo: "Annuler", type: "Taper", speak: "Parler" },
-    modal: { mapAction: "Mapper l'action", enterWord: "Entrer le mot", typeYourWord: "Tapez votre mot...", cancel: "Annuler", save: "Enregistrer" }
+    modal: { mapAction: "Mapper l'action", enterWord: "Entrer le mot", typeYourWord: "Tapez votre mot...", cancel: "Annuler", save: "Enregistrer" },
+    aboutPage: { title: "Glide & Write", version: "Version 1.0.0", p1: "Glide & Write est un système de saisie de texte innovant et accessible conçu pour rendre la frappe plus facile et plus rapide grâce au glissement directionnel et aux configurations de dictionnaire en couches.", p2: "Que vous l'utilisiez pour des conversations quotidiennes, une terminologie spécialisée ou une communication accessible, Glide & Write s'adapte à vos besoins avec des ensembles de mots entièrement personnalisables et des commandes de balayage intuitives.", contact: "Contact", github: "GitHub", website: "Site Web" },
+    tutorial: {
+      selectLanguage: "Veuillez sélectionner votre langue préférée avant de commencer.",
+      promptTitle: "Bienvenue sur Glide & Write !",
+      promptDesc: "Souhaitez-vous un petit tutoriel pour apprendre à utiliser l'application ?",
+      btnYes: "Oui, démarrer le tutoriel",
+      btnLater: "Demander plus tard",
+      btnNo: "Non, ne plus demander",
+
+      finish: "Terminer",
+      next: "Suivant",
+      startTutorialBtn: "Redémarrer le Tutoriel"
+    }
   },
   de: {
     menu: { title: "Menü", talkEntry: "Sprechen", configs: "Konfigurationen", settings: "Einstellungen", about: "Über" },
@@ -107,6 +322,19 @@ export const translations: Record<LanguageType, any> = {
     configs: { editMapped: "Zugeordnete Sequenzen bearbeiten", typeWord: "Wort tippen...", configTitle: "Konfigurationstitel", description: "Beschreibung...", createNew: "Neue Konfiguration erstellen" },
     main: { drafting: "Entwurf...", existing: "Vorhanden:", mapping: "Zuordnung" },
     bottomBar: { clear: "Löschen", undo: "Rückgängig", type: "Tippen", speak: "Sprechen" },
-    modal: { mapAction: "Aktion zuordnen", enterWord: "Wort eingeben", typeYourWord: "Geben Sie Ihr Wort ein...", cancel: "Abbrechen", save: "Speichern" }
+    modal: { mapAction: "Aktion zuordnen", enterWord: "Wort eingeben", typeYourWord: "Geben Sie Ihr Wort ein...", cancel: "Abbrechen", save: "Speichern" },
+    aboutPage: { title: "Glide & Write", version: "Version 1.0.0", p1: "Glide & Write ist ein innovatives, barrierefreies Texteingabesystem, das das Tippen durch direktionales Gleiten und mehrschichtige Wörterbuchkonfigurationen einfacher und schneller machen soll.", p2: "Egal, ob Sie es für alltägliche Gespräche, spezielle Terminologie oder barrierefreie Kommunikation verwenden, Glide & Write passt sich Ihren Bedürfnissen mit vollständig anpassbaren Wörtern und intuitiven Wischsteuerungen an.", contact: "Kontakt", github: "GitHub", website: "Webseite" },
+    tutorial: {
+      selectLanguage: "Bitte wählen Sie Ihre bevorzugte Sprache, bevor wir beginnen.",
+      promptTitle: "Willkommen bei Glide & Write!",
+      promptDesc: "Möchten Sie ein kurzes Tutorial, um zu erfahren, wie Sie die App verwenden?",
+      btnYes: "Ja, Tutorial starten",
+      btnLater: "Später fragen",
+      btnNo: "Nein, nicht mehr fragen",
+
+      finish: "Beenden",
+      next: "Weiter",
+      startTutorialBtn: "Tutorial neu starten"
+    }
   }
 };

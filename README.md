@@ -26,7 +26,7 @@ At the center of the application is a large **"Swipe Area"**. Users create words
 While looking at the screen, users can visually see which word will be produced if they swipe in a certain direction (displayed next to the directional arrows).
 
 <div align="center">
-  <img src="./assets/gifs/first_message.gif" width="300" alt="Writing a message" />
+  <img src="./assets/gifs/second_message.gif" width="300" alt="Writing another message" />
 </div>
 
 ---
@@ -47,7 +47,7 @@ This mode unlocks the true "fast communication" capability that the app promises
 * **Use Case:** It allows experienced users who are accustomed to the app to construct an entire sentence in seconds without ever lifting their finger.
 
 <div align="center">
-  <img src="./assets/gifs/second_message.gif" width="300" alt="Writing another message" />
+  <img src="./assets/gifs/first_message.gif" width="300" alt="Writing a message" />
 </div>
 
 ---

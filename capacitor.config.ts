@@ -5,7 +5,7 @@ const config: CapacitorConfig = {
   appName: 'GlideAndWrite',
   webDir: 'dist',
   server: {
-    url: 'http://10.0.2.2:3000',
+    url: 'http://192.168.3.19:3000',
     cleartext: true
   }
 };

@@ -163,7 +163,7 @@ export default function App() {
     return (localStorage.getItem('gw_mode') as any) || 'talk';
   });
   const [inputStyle, setInputStyle] = useState<'step' | 'glide'>(() => {
-    return (localStorage.getItem('gw_inputStyle') as any) || 'step';
+    return (localStorage.getItem('gw_inputStyle') as any) || 'glide';
   });
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [editingConfigId, setEditingConfigId] = useState<string | null>(null);

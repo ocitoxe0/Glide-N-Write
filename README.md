@@ -3,7 +3,9 @@
   <h1>Glide & Write</h1>
   <p>
     <a href="https://glideandwrite.org/">Website</a> • 
-    <a href="mailto:hello@glideandwrite.org">Contact</a>
+    <a href="mailto:hello@glideandwrite.org">Contact</a> •
+    <a href="https://www.patreon.com/GlideWrite">Patreon</a> •
+    <a href="https://opencollective.com/glide-and-write">Open Collective</a>
   </p>
 </div>
 
@@ -184,6 +186,11 @@ npx cap open android
 
 ## 🤝 Contributing
 Contributions, issues, and feature requests are highly encouraged! Feel free to check the issues page or open a pull request.
+
+## 💖 Support the Project
+If you find Glide & Write helpful and want to support its continued development, you can back us on:
+- **[Patreon](https://www.patreon.com/GlideWrite)**
+- **[Open Collective](https://opencollective.com/glide-and-write)**
 
 ## 📄 License
 This project is open-source and free to use.
